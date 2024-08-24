@@ -1,10 +1,10 @@
 import Header from "../components/Header";
-import Body from "../components/Body";
+import Top from "../components/Top";
 export default function Home() {
   return (
     <main className="">
       <Header></Header>
-      <Body></Body>
+      <Top></Top>
     </main>
   );
 }

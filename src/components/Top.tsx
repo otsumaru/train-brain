@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import MenuButton from "./MenuButton";
 
-const Body = () => {
+const Top = () => {
   const currentPath = usePathname();
 
   const handleClickNext = () => {};
@@ -13,10 +13,10 @@ const Body = () => {
 
   const record = { text: "きろく", handleClickFunction: () => {} };
 
-  const setting = { text: "せってい", handleClickFunction: () => {} };
+  const setting = { text: "あそびかた", handleClickFunction: () => {} };
 
   return (
-    <div>
+    <div className="pt-20">
       <h2 className="text-xl mt-10 text-center font-semibold">
         変わり続けるものは
         <br /> 存在し続ける。
@@ -26,9 +26,9 @@ const Body = () => {
         alt="scientist Image"
         width={170}
         height={210}
-        className="mx-auto"
+        className="mx-auto mt-4"
       />
-      <div className="mt-10 text-center">
+      <div className="mt-8 text-center flex flex-col items-center space-y-2">
         <Link id="game" href="/game">
           <MenuButton {...start} />
         </Link>
@@ -43,4 +43,4 @@ const Body = () => {
   );
 };
 
-export default Body;
+export default Top;
