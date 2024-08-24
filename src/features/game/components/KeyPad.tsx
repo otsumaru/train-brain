@@ -12,7 +12,7 @@ const KeyPad: React.FC<KeyPadProps> = ({ onKeyPress }) => {
   };
 
   return (
-    <div className="grid grid-cols-3 gap-2 p-4 ">
+    <div className="grid grid-cols-3 gap-2 p-4 mt-8">
       {keys.map((key) => (
         <button
           key={key}
@@ -26,7 +26,7 @@ const KeyPad: React.FC<KeyPadProps> = ({ onKeyPress }) => {
       <button
         key={"0"}
         onClick={() => handleKeyPress("0")}
-        className="mx-0 w-[108px] h-14 text-2xl font-bold bg-white border rounded-lg shadow-md active:bg-black active:text-white"
+        className="w-[108px] h-14 text-2xl font-bold bg-white border rounded-lg shadow-md active:bg-black active:text-white"
       >
         0
       </button>
