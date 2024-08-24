@@ -11,6 +11,9 @@ const Game = () => {
 
   return (
     <div className="pt-20">
+      <div className="h-16 mt-2"></div>
+      <div className="h-28 mt-2"></div>
+      <div className="h-16 mt-2"></div>
       <KeyPad onKeyPress={handleKeyPress} />
     </div>
   );
