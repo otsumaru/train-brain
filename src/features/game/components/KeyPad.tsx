@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import BackSpaceIcon from "../../../components/icon/BackSpaceIcon";
 
 type KeyPadProps = {
   onKeyPress: (value: string) => void;
@@ -12,7 +13,7 @@ const KeyPad: React.FC<KeyPadProps> = ({ onKeyPress }) => {
   };
 
   return (
-    <div className="grid grid-cols-3 gap-2 p-4 mt-8">
+    <div className="grid grid-cols-3 gap-2 mt-8">
       {keys.map((key) => (
         <button
           key={key}
@@ -29,6 +30,13 @@ const KeyPad: React.FC<KeyPadProps> = ({ onKeyPress }) => {
         className="w-[108px] h-14 text-2xl font-bold bg-white border rounded-lg shadow-md active:bg-black active:text-white"
       >
         0
+      </button>
+      <button
+        key={"backspace"}
+        onClick={() => handleKeyPress("backspace")}
+        className="w-[108px] h-14 text-2xl font-bold bg-white border rounded-lg shadow-md active:bg-black active:text-white"
+      >
+        <BackSpaceIcon></BackSpaceIcon>
       </button>
     </div>
   );
