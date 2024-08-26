@@ -2,15 +2,11 @@ import React, { useState } from "react";
 import BackSpaceIcon from "../../../components/icon/BackSpaceIcon";
 
 type KeyPadProps = {
-  onKeyPress: (value: string) => void;
+  handleKeyPress: (value: string) => void;
 };
 
-const KeyPad: React.FC<KeyPadProps> = ({ onKeyPress }) => {
+const KeyPad: React.FC<KeyPadProps> = ({ handleKeyPress }) => {
   const keys = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
-
-  const handleKeyPress = (key: string) => {
-    onKeyPress(key);
-  };
 
   return (
     <div className="grid grid-cols-3 gap-2 mt-8">

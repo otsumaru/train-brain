@@ -11,8 +11,7 @@ const Header = () => {
         height={50} // 高さを50pxに設定
         className=""
       />
-      <h1 className="text-3xl font-bold">脳のアップデート</h1>
-
+      <h1 className="pt-2 text-3xl font-bold">秒速計算バトル</h1>
       <button className="w-11 h-11 justify-center items-center">
         <UserIcon />
       </button>
