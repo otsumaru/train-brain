@@ -15,12 +15,12 @@ const Game = () => {
   };
 
   useEffect(() => {
-    let counter = 3;
-    setCountdown(counter);
+    let count = 3;
+    setCountdown(count);
     const interval = setInterval(() => {
-      counter--;
-      setCountdown(counter);
-      if (counter === 0) {
+      count--;
+      setCountdown(count);
+      if (count === 0) {
         clearInterval(interval);
         setCountdown(0);
         setIsActive(true);
@@ -28,23 +28,34 @@ const Game = () => {
     }, 1000);
   }, []);
 
-  useEffect(
-    () => {
-      const interval = setInterval(() => {
-        if (isActive) {
-          setTime((prevTime) => prevTime + 1);
-        } else if (!isActive && time !== 0) {
-          clearInterval(interval);
-        }
-        return () => clearInterval(interval);
-      }, 10);
-    }, // 10ミリ秒ごとに更新 (0.01秒)
+  useEffect(() => {
+    let count = 0;
+    const interval = setInterval(() => {
+      if (isActive) {
+        count++;
+        setTime(count);
+      } else if (!isActive && time !== 0) {
+        //TODO 時間を記録する
+        clearInterval(interval);
+      }
+      return () => clearInterval(interval);
+    }, 10); // 10ミリ秒ごとに更新 (0.01秒)
+  }, [isActive]);
 
-    [isActive, time]
-  );
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     if (isActive) {
+  //       setTime((prevTime) => prevTime + 1);
+  //     } else if (!isActive && time !== 0) {
+  //       //TODO 時間を記録する
+  //       clearInterval(interval);
+  //     }
+  //     return () => clearInterval(interval);
+  //   }, 10); // 10ミリ秒ごとに更新 (0.01秒)
+  // }, [isActive, time]);
 
   const formatTime = (time: number) => {
-    const seconds = Math.floor((time % 6000) / 100);
+    const seconds = Math.floor(time / 100);
     const milliseconds = time % 100;
 
     return `${seconds < 10 ? `0${seconds}` : seconds}:${
@@ -60,7 +71,7 @@ const Game = () => {
         </div>
       )}
       <div className="mt-2 text-center text-3xl">
-        <span>2:03</span>
+        <span>{formatTime(time)}</span>
       </div>
       <p className=" text-lg] font-bold text-gray-700">第２問</p>
       <div className="h-14 mx-auto w-60 rounded-lg flex justify-center items-center bg-gray-200 text-lg">
