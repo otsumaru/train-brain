@@ -46,7 +46,7 @@ const Game = () => {
     const seconds = Math.floor(time / 100);
     const milliseconds = time % 100;
 
-    return `${seconds < 10 ? `0${seconds}` : seconds}:${
+    return `${seconds}:${
       milliseconds < 10 ? `0${milliseconds}` : milliseconds
     }`;
   };
@@ -59,7 +59,7 @@ const Game = () => {
         </div>
       )}
       <div className="mt-2 text-center text-3xl">
-        <span>{formatTime(time)}</span>
+        <span style={{ fontFamily: "Fira code" }}>{formatTime(time)}</span>
       </div>
       <p className=" text-lg] font-bold text-gray-700">第２問</p>
       <div className="h-14 mx-auto w-60 rounded-lg flex justify-center items-center bg-gray-200 text-lg">
