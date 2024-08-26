@@ -2,11 +2,13 @@
 import React, { useEffect, useState } from "react";
 import KeyPad from "./components/KeyPad";
 import Question from "./components/Question";
+import questions from "./resource/questions";
 
 const Game = () => {
   const [input, setInput] = useState("");
   const [score, setScore] = useState(0);
   const [isActive, setIsActive] = useState(false);
+  const [currentQuestions, setCurrentQuestions] = useState(questions);
 
   // 入力の更新
   const handleKeyPress = (key: string) => {
@@ -27,6 +29,15 @@ const Game = () => {
   useEffect(() => {
     let count = 3;
     setCountdown(count);
+    const shuffledQuestions = [...questions]
+      .sort(() => 0.5 - Math.random())
+      .map((question, index) => ({
+        ...question,
+        id: index + 1, // 新しいIDを割り当てる
+      }));
+    setCurrentQuestions(shuffledQuestions.slice(0, 10));
+    console.log(currentQuestions);
+
     const interval = setInterval(() => {
       count--;
       setCountdown(count);
@@ -61,34 +72,11 @@ const Game = () => {
     return `${seconds}:${milliseconds}`;
   };
 
-  const [questions, setQuestions] = useState([
-    { id: 1, question: "3+5", answer: "8" },
-    { id: 2, question: "3×4", answer: "12" },
-    { id: 3, question: "10-6", answer: "4" },
-    { id: 4, question: "8÷2", answer: "4" },
-    { id: 5, question: "7+9", answer: "16" },
-    { id: 6, question: "5×6", answer: "30" },
-    { id: 7, question: "20÷5", answer: "4" },
-    { id: 8, question: "15-9", answer: "6" },
-    { id: 9, question: "12+7", answer: "19" },
-    { id: 10, question: "14÷2", answer: "7" },
-    { id: 11, question: "9×3", answer: "27" },
-    { id: 12, question: "18÷6", answer: "3" },
-    { id: 13, question: "11+8", answer: "19" },
-    { id: 14, question: "16-7", answer: "9" },
-    { id: 15, question: "2×9", answer: "18" },
-    { id: 16, question: "24÷3", answer: "8" },
-    { id: 17, question: "6+14", answer: "20" },
-    { id: 18, question: "21-13", answer: "8" },
-    { id: 19, question: "4×7", answer: "28" },
-    { id: 20, question: "30÷5", answer: "6" },
-  ]);
-
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
   // 問題を切り替える処理
   const handleNextQuestion = () => {
-    setCurrentQuestionIndex((prev) => (prev + 1) % questions.length);
+    setCurrentQuestionIndex((prev) => (prev + 1) % currentQuestions.length);
     setInput("");
     console.log("次へ進む");
   };
@@ -107,7 +95,9 @@ const Game = () => {
       </div>
       <p>{score}</p>
       <Question
-        questions={questions[(currentQuestionIndex + 1) % questions.length]}
+        questions={
+          currentQuestions[(currentQuestionIndex + 1) % currentQuestions.length]
+        }
         className={baseClassName}
         isCurrent={false}
         input={null}
@@ -115,7 +105,7 @@ const Game = () => {
         setScore={setScore}
       />
       <Question
-        questions={questions[currentQuestionIndex]}
+        questions={currentQuestions[currentQuestionIndex]}
         className={baseClassName}
         isCurrent
         input={input}

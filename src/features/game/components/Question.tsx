@@ -21,6 +21,7 @@ const Question: React.FC<QuestionProps> = ({
 }) => {
   const question = questions.question;
   const answer = questions.answer;
+  const id = questions.id;
   const [playCorrectSound] = useSound("/sounds/correct.mp3");
   const [playWrongSound] = useSound("/sounds/wrong.mp3");
 
@@ -55,7 +56,13 @@ const Question: React.FC<QuestionProps> = ({
 
   return (
     <>
-      <p className=" text-lg] font-bold text-gray-700">第問</p>
+      <p
+        className={`font-bold text-gray-700 ${
+          isCurrent ? `text-lg` : `ml-12 text-sm`
+        }`}
+      >
+        第{id}問
+      </p>
       <motion.div
         initial={{ y: isCurrent ? 0 : -50 }}
         animate={{ y: 0 }}
