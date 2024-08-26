@@ -22,7 +22,7 @@ const Top = () => {
         <br /> 存在し続ける。
       </h2>
       <Image
-        src="/scientist.png"
+        src="/img/scientist.png"
         alt="scientist Image"
         width={170}
         height={210}
