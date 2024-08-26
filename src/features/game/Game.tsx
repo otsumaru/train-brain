@@ -42,18 +42,6 @@ const Game = () => {
     }, 10); // 10ミリ秒ごとに更新 (0.01秒)
   }, [isActive]);
 
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     if (isActive) {
-  //       setTime((prevTime) => prevTime + 1);
-  //     } else if (!isActive && time !== 0) {
-  //       //TODO 時間を記録する
-  //       clearInterval(interval);
-  //     }
-  //     return () => clearInterval(interval);
-  //   }, 10); // 10ミリ秒ごとに更新 (0.01秒)
-  // }, [isActive, time]);
-
   const formatTime = (time: number) => {
     const seconds = Math.floor(time / 100);
     const milliseconds = time % 100;
@@ -71,7 +59,7 @@ const Game = () => {
         </div>
       )}
       <div className="mt-2 text-center text-3xl">
-        <span style={{ fontFamily: "Fira code" }}>{formatTime(time)}</span>
+        <span>{formatTime(time)}</span>
       </div>
       <p className=" text-lg] font-bold text-gray-700">第２問</p>
       <div className="h-14 mx-auto w-60 rounded-lg flex justify-center items-center bg-gray-200 text-lg">
