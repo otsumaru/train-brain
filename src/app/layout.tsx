@@ -6,8 +6,14 @@ import Head from "next/head";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Training brain",
-  description: "Activate your brain in just 10 seconds",
+  title: "秒速計算ノック",
+  description: "瞬時に計算力を試すクイズアプリ。計算スピードを競って楽しもう！",
+  keywords: ["計算クイズ", "速さ", "脳トレ", "数学ゲーム", "瞬時の計算"],
+  openGraph: {
+    title: "秒速計算ノック | 計算スピードを競え！",
+    url: "https://train-brain.vercel.app/",
+    // TODO
+  },
 };
 
 export default function RootLayout({
