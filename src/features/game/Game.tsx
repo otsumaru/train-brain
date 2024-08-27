@@ -9,6 +9,10 @@ const Game = () => {
   const [score, setScore] = useState(0);
   const [isActive, setIsActive] = useState(false);
   const [currentQuestions, setCurrentQuestions] = useState(questions);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+
+  // 最大問題数
+  const NumberOfQuestion = 10;
 
   // 入力の更新
   const handleKeyPress = (key: string) => {
@@ -35,7 +39,7 @@ const Game = () => {
         ...question,
         id: index + 1, // 新しいIDを割り当てる
       }));
-    setCurrentQuestions(shuffledQuestions.slice(0, 10));
+    setCurrentQuestions(shuffledQuestions.slice(0, NumberOfQuestion));
     console.log(currentQuestions);
 
     const interval = setInterval(() => {
@@ -64,6 +68,13 @@ const Game = () => {
     }, 10); // 10ミリ秒ごとに更新 (0.01秒)
   }, [isActive]);
 
+  useEffect(() => {
+    // 問題番号＝問題数
+    if (currentQuestionIndex + 1 === NumberOfQuestion) {
+      // TODO
+    }
+  }, [currentQuestionIndex]);
+
   // 時間を10:00の形にする
   const formatTime = (time: number) => {
     const seconds = Math.floor(time / 100);
@@ -71,8 +82,6 @@ const Game = () => {
 
     return `${seconds}:${milliseconds}`;
   };
-
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
   // 問題を切り替える処理
   const handleNextQuestion = () => {
@@ -94,24 +103,43 @@ const Game = () => {
         <span style={{ fontFamily: "Fira code" }}>{formatTime(time)}</span>
       </div>
       <p>{score}</p>
-      <Question
-        questions={
-          currentQuestions[(currentQuestionIndex + 1) % currentQuestions.length]
-        }
-        className={baseClassName}
-        isCurrent={false}
-        input={null}
-        handleNextQuestion={handleNextQuestion}
-        setScore={setScore}
-      />
-      <Question
-        questions={currentQuestions[currentQuestionIndex]}
-        className={baseClassName}
-        isCurrent
-        input={input}
-        handleNextQuestion={handleNextQuestion}
-        setScore={setScore}
-      />
+      {currentQuestionIndex + 1 === NumberOfQuestion ? (
+        <>
+          <div className="h-[76px] mx-auto w-60 flex justify-center items-center text-lg"></div>
+          <Question
+            questions={currentQuestions[currentQuestionIndex]}
+            className={baseClassName}
+            isCurrent
+            input={input}
+            handleNextQuestion={handleNextQuestion}
+            setScore={setScore}
+          />
+        </>
+      ) : (
+        <>
+          <Question
+            questions={
+              currentQuestions[
+                (currentQuestionIndex + 1) % currentQuestions.length
+              ]
+            }
+            className={baseClassName}
+            isCurrent={false}
+            input={null}
+            handleNextQuestion={handleNextQuestion}
+            setScore={setScore}
+          />
+          <Question
+            questions={currentQuestions[currentQuestionIndex]}
+            className={baseClassName}
+            isCurrent={true}
+            input={input}
+            handleNextQuestion={handleNextQuestion}
+            setScore={setScore}
+          />
+        </>
+      )}
+
       {/* 次の問題 */}
 
       {/* <p className=" text-lg] font-bold text-gray-700">第２問</p>

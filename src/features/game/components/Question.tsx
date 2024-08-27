@@ -64,7 +64,7 @@ const Question: React.FC<QuestionProps> = ({
         第{id}問
       </p>
       <motion.div
-        initial={{ y: isCurrent ? 0 : -50 }}
+        initial={{ y: isCurrent ? -80 : -60 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.3 }}
         className={`${className} ${
