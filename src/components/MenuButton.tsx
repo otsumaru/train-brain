@@ -10,7 +10,7 @@ const MenuButton = (props: StartProps) => {
   return (
     <button
       onClick={handleClickFunction}
-      className={`${bgColor} rounded-lg w-56 h-12 shadow-gray-400 shadow-md text-lg bg-white hover:bg-black hover:text-white`}
+      className={`${bgColor} rounded-lg w-56 h-12 shadow-gray-400 shadow-md text-lg`}
     >
       {text}
     </button>
