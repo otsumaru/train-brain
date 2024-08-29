@@ -33,7 +33,9 @@ const Ranking = () => {
 
   return (
     <div className="pt-20 px-4">
-      <h2 className="font-semibold text-xl text-center">ランキング</h2>
+      <h2 className="font-bold text-green-600 text-3xl text-center mb-6">
+        ランキング
+      </h2>
       {records ? (
         records.map((record, index) => (
           <div key={record.id} className="my-3 p-4 bg-white shadow rounded">
@@ -48,6 +50,14 @@ const Ranking = () => {
       ) : (
         <p>Loading...</p>
       )}
+      <div className="text-center mt-8">
+        <button
+          className="bg-green-500 text-white py-2 px-4 rounded-lg shadow hover:bg-green-600"
+          onClick={() => window.history.back()}
+        >
+          戻る
+        </button>
+      </div>
     </div>
   );
 };
