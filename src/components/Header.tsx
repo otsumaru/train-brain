@@ -1,5 +1,6 @@
 import Image from "next/image";
 import UserIcon from "./icon/UserIcon";
+import Link from "next/link";
 
 const Header = () => {
   return (
@@ -12,9 +13,12 @@ const Header = () => {
         className=""
       />
       <h1 className="pt-2 text-3xl font-bold">秒速計算ノック</h1>
-      <button className="w-11 h-11 justify-center items-center">
+      <Link
+        href="/register"
+        className="flex justify-center items-center w-12 h-12"
+      >
         <UserIcon />
-      </button>
+      </Link>
     </div>
   );
 };

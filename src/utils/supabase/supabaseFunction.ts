@@ -23,8 +23,14 @@ export const getRanking = async (): Promise<User[] | null> => {
   return data as User[]; // dataの型をUser[]として扱う
 };
 
-export const addResult = async (result: User): Promise<void> => {
-  const { error } = await supabase.from("users").insert(result);
+export const addResult = async (
+  email: string | null,
+  result: number,
+  name: string | null
+): Promise<void> => {
+  const { error } = await supabase
+    .from("users")
+    .insert({ time: result, email: email, user_name: name });
 
   if (error) {
     console.error("Error adding item:", error);

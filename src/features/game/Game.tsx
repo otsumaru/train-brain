@@ -5,6 +5,7 @@ import Question from "./components/Question";
 import questions from "./resource/questions";
 import Link from "next/link";
 import { FaTwitter } from "react-icons/fa"; // Twitterアイコンのインポート
+import { addResult } from " @/utils/supabase/supabaseFunction";
 
 const Game = () => {
   const [input, setInput] = useState("");
@@ -66,7 +67,12 @@ const Game = () => {
       }, 10); // 10ミリ秒ごとに更新 (0.01秒)
     } else if (!isActive && time !== 0) {
       clearInterval(interval);
-      // TODO: 時間を記録する
+      // TODO ログイン機能など
+      const email = null;
+      const name = null;
+      if (name) {
+        addResult(null, time, name);
+      }
     }
 
     // クリーンアップ関数: 次のレンダリングで`useEffect`が再実行される前にクリア
