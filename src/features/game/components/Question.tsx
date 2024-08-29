@@ -8,7 +8,7 @@ interface QuestionProps {
   isCurrent: boolean;
   input: string | null;
   handleNextQuestion: () => void;
-  setScore: React.Dispatch<React.SetStateAction<number>>;
+  setCurrentQuestionIndex: (value: React.SetStateAction<number>) => void;
 }
 
 const Question: React.FC<QuestionProps> = ({
@@ -17,7 +17,7 @@ const Question: React.FC<QuestionProps> = ({
   isCurrent,
   input,
   handleNextQuestion,
-  setScore,
+  setCurrentQuestionIndex,
 }) => {
   const question = questions.question;
   const answer = questions.answer;
@@ -30,7 +30,7 @@ const Question: React.FC<QuestionProps> = ({
       // TODO 正解の処理
       console.log("正解");
       handleNextQuestion();
-      setScore((prev) => prev + 1);
+      setCurrentQuestionIndex((prev) => prev + 1);
       playCorrectSound();
     } else if (answer.length === 2 && enteredAnswer.length === 1) {
       return;

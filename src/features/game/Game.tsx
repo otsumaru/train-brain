@@ -3,10 +3,11 @@ import React, { useEffect, useState } from "react";
 import KeyPad from "./components/KeyPad";
 import Question from "./components/Question";
 import questions from "./resource/questions";
+import Link from "next/link";
+import { FaTwitter } from "react-icons/fa"; // Twitterアイコンのインポート
 
 const Game = () => {
   const [input, setInput] = useState("");
-  const [score, setScore] = useState(0);
   const [isActive, setIsActive] = useState(false);
   const [currentQuestions, setCurrentQuestions] = useState(questions);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -75,10 +76,55 @@ const Game = () => {
   // 解き終わりの処理
 
   const GameFinish = () => {
+    const resultTime = formatTime(time);
+
+    const shareOnTwitter = () => {
+      const text = encodeURIComponent(
+        `秒速計算ノックで${resultTime}秒の記録を達成しました！`
+      );
+      const url = encodeURIComponent(window.location.href); // 現在のページのURL
+      const hashtags = encodeURIComponent("秒速計算ノック,りあゼミ,ZeroPlus");
+      const twitterUrl = `https://twitter.com/intent/tweet?text=${text}&url=${url}&hashtags=${hashtags}`;
+      window.open(twitterUrl, "_blank");
+    };
+
     return (
-      <div className="h-60">
-        <p>コンプリート！</p>
-        <p>{formatTime(time)}</p>
+      <div className="h-screen flex flex-col justify-center items-center text-center">
+        <h2 className="text-4xl font-bold text-blue-600 mb-4">
+          コンプリート！
+        </h2>
+        <p className="text-lg text-gray-700 mb-8">お疲れ様でした！</p>
+        <p className="text-2xl text-gray-900 font-semibold mb-6">
+          記録: {resultTime}
+        </p>
+
+        <div className="flex flex-col space-y-4 w-full px-8">
+          <button
+            onClick={() => window.location.reload()}
+            className="bg-blue-500 text-white py-3 rounded-lg shadow-md hover:bg-blue-600"
+          >
+            もう一度挑戦
+          </button>
+          <Link
+            href="/"
+            className="flex items-center justify-center bg-gray-800 text-white py-3 rounded-lg shadow-md hover:bg-gray-900"
+          >
+            <span className="mr-2">🏠</span> ホームへ戻る
+          </Link>
+          <Link
+            href="/record"
+            className="bg-green-500 text-white py-3 rounded-lg shadow-md hover:bg-green-600"
+          >
+            ランキングを見る
+          </Link>
+          <button
+            className="flex items-center justify-center bg-indigo-500 text-white py-3 rounded-lg shadow-md hover:bg-indigo-600"
+            onClick={shareOnTwitter}
+          >
+            <FaTwitter className="mr-2" />
+            結果をシェアする
+          </button>
+        </div>
       </div>
     );
   };
@@ -98,7 +144,6 @@ const Game = () => {
     if (currentQuestionIndex + 1 === NumberOfQuestion) {
       setIsActive(false);
     } else {
-      setCurrentQuestionIndex((prev) => prev + 1);
       setInput("");
       console.log("次へ進む");
     }
@@ -120,7 +165,6 @@ const Game = () => {
           <div className="mt-2 text-center text-3xl">
             <span style={{ fontFamily: "Fira code" }}>{formatTime(time)}</span>
           </div>
-          <p>{score}</p>
           {currentQuestionIndex + 1 === NumberOfQuestion ? (
             <>
               <div className="h-[76px] mx-auto w-60 flex justify-center items-center text-lg"></div>
@@ -130,7 +174,7 @@ const Game = () => {
                 isCurrent
                 input={input}
                 handleNextQuestion={handleNextQuestion}
-                setScore={setScore}
+                setCurrentQuestionIndex={setCurrentQuestionIndex}
               />
             </>
           ) : (
@@ -145,7 +189,7 @@ const Game = () => {
                 isCurrent={false}
                 input={null}
                 handleNextQuestion={handleNextQuestion}
-                setScore={setScore}
+                setCurrentQuestionIndex={setCurrentQuestionIndex}
               />
               <Question
                 questions={currentQuestions[currentQuestionIndex]}
@@ -153,26 +197,13 @@ const Game = () => {
                 isCurrent={true}
                 input={input}
                 handleNextQuestion={handleNextQuestion}
-                setScore={setScore}
+                setCurrentQuestionIndex={setCurrentQuestionIndex}
               />
             </>
           )}
-
-          {/* 次の問題 */}
-
-          {/* <p className=" text-lg] font-bold text-gray-700">第２問</p>
-      <div className="h-14 mx-auto w-60 rounded-lg flex justify-center items-center bg-gray-200 text-lg">
-        <span>3×4=</span>
-        <span></span>
-      </div>
-      <p className="text-xl font-bold text-black">第１問</p>
-      <div className="h-28 rounded-xl flex justify-center items-center bg-white font-bold text-6xl shadow-lg">
-        <span id="question">3+5=</span>
-        <span id="answer">{input}</span>
-      </div> */}
+          <KeyPad handleKeyPress={handleKeyPress} />
         </>
       )}
-      <KeyPad handleKeyPress={handleKeyPress} />
     </div>
   );
 };
