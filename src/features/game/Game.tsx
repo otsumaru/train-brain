@@ -96,7 +96,7 @@ const Game = () => {
     };
 
     return (
-      <div className="h-screen flex flex-col justify-center items-center text-center">
+      <div className="h-5/6 flex flex-col justify-center items-center text-center">
         <h2 className="text-4xl font-bold text-blue-600 mb-4">
           コンプリート！
         </h2>
