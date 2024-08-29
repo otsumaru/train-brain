@@ -70,6 +70,7 @@ const Game = () => {
       // TODO ログイン機能など
       const email = null;
       const name = null;
+
       if (name) {
         addResult(email, time, name);
       }
