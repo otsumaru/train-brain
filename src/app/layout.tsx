@@ -12,7 +12,14 @@ export const metadata: Metadata = {
   openGraph: {
     title: "秒速計算ノック | 計算スピードを競え！",
     url: "https://train-brain.vercel.app/",
-    // TODO
+    images: [
+      {
+        url: "https://train-brain.vercel.app/img/meta.png",
+        width: 287,
+        height: 356,
+        alt: "秒速計算ノックのイメージ",
+      },
+    ],
   },
 };
 

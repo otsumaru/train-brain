@@ -7,6 +7,7 @@ interface QuestionProps {
   className: string;
   isCurrent: boolean;
   input: string | null;
+  setInput: React.Dispatch<React.SetStateAction<string>>;
   handleNextQuestion: () => void;
   setCurrentQuestionIndex: (value: React.SetStateAction<number>) => void;
 }
@@ -16,6 +17,7 @@ const Question: React.FC<QuestionProps> = ({
   className,
   isCurrent,
   input,
+  setInput,
   handleNextQuestion,
   setCurrentQuestionIndex,
 }) => {
@@ -37,7 +39,7 @@ const Question: React.FC<QuestionProps> = ({
     } else {
       // TODO 不正解の処理
       console.log("不正解");
-      handleNextQuestion();
+      setInput("");
       playWrongSound();
       return;
     }

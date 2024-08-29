@@ -96,7 +96,7 @@ const Game = () => {
     };
 
     return (
-      <div className="h-5/6 flex flex-col justify-center items-center text-center">
+      <div className="pt-16 flex flex-col justify-center items-center text-center">
         <h2 className="text-4xl font-bold text-blue-600 mb-4">
           コンプリート！
         </h2>
@@ -180,6 +180,7 @@ const Game = () => {
                 className={baseClassName}
                 isCurrent
                 input={input}
+                setInput={setInput}
                 handleNextQuestion={handleNextQuestion}
                 setCurrentQuestionIndex={setCurrentQuestionIndex}
               />
@@ -195,6 +196,7 @@ const Game = () => {
                 className={baseClassName}
                 isCurrent={false}
                 input={null}
+                setInput={setInput}
                 handleNextQuestion={handleNextQuestion}
                 setCurrentQuestionIndex={setCurrentQuestionIndex}
               />
@@ -203,6 +205,7 @@ const Game = () => {
                 className={baseClassName}
                 isCurrent={true}
                 input={input}
+                setInput={setInput}
                 handleNextQuestion={handleNextQuestion}
                 setCurrentQuestionIndex={setCurrentQuestionIndex}
               />
