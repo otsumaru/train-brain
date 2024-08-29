@@ -209,12 +209,3 @@ const Game = () => {
 };
 
 export default Game;
-
-{
-  /* <input
-  onChange={() => handleKeyPress}
-  type="text"
-  className="w-20 h-20"
-  value={input}
-/>; */
-}

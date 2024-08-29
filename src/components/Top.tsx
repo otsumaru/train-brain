@@ -1,19 +1,28 @@
 "use client";
 import React from "react";
-import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import MenuButton from "./MenuButton";
 
 const Top = () => {
-  const currentPath = usePathname();
-
   const handleClickNext = () => {};
-  const start = { text: "はじめる", handleClickFunction: handleClickNext };
+  const start = {
+    text: "はじめる",
+    handleClickFunction: handleClickNext,
+    bgColor: "bg-blue-500 hover:bg-blue-600",
+  };
 
-  const record = { text: "きろく", handleClickFunction: () => {} };
+  const record = {
+    text: "きろく",
+    handleClickFunction: () => {},
+    bgColor: "bg-green-500 hover:bg-green-600",
+  };
 
-  const setting = { text: "あそびかた", handleClickFunction: () => {} };
+  const setting = {
+    text: "あそびかた",
+    handleClickFunction: () => {},
+    bgColor: "bg-indigo-500 hover:bg-indigo-600",
+  };
 
   return (
     <div className="pt-20">
@@ -28,7 +37,7 @@ const Top = () => {
         height={210}
         className="mx-auto mt-4"
       />
-      <div className="mt-8 text-center flex flex-col items-center space-y-2">
+      <div className="mt-8 text-center flex flex-col items-center space-y-3 text-white">
         <Link id="game" href="/game">
           <MenuButton {...start} />
         </Link>
