@@ -56,93 +56,116 @@ const Game = () => {
   // 経過時間
   useEffect(() => {
     let count = 0;
-    const interval = setInterval(() => {
-      if (isActive) {
-        count++;
+    let interval: NodeJS.Timeout | undefined;
+
+    if (isActive) {
+      interval = setInterval(() => {
+        count += 1;
         setTime(count);
-      } else if (!isActive && time !== 0) {
-        //TODO 時間を記録する
-        clearInterval(interval);
-      }
-      return () => clearInterval(interval);
-    }, 10); // 10ミリ秒ごとに更新 (0.01秒)
+      }, 10); // 10ミリ秒ごとに更新 (0.01秒)
+    } else if (!isActive && time !== 0) {
+      clearInterval(interval);
+      // TODO: 時間を記録する
+    }
+
+    // クリーンアップ関数: 次のレンダリングで`useEffect`が再実行される前にクリア
+    return () => clearInterval(interval);
   }, [isActive]);
 
-  useEffect(() => {
-    // 問題番号＝問題数
-    if (currentQuestionIndex + 1 === NumberOfQuestion) {
-      // TODO
-    }
-  }, [currentQuestionIndex]);
+  // 解き終わりの処理
 
-  // 時間を10:00の形にする
+  const GameFinish = () => {
+    return (
+      <div className="h-60">
+        <p>おわり！</p>
+        <p>{formatResultTime(time)}</p>
+      </div>
+    );
+  };
+
+  // 時間を10:0の形にする
   const formatTime = (time: number) => {
     const seconds = Math.floor(time / 100);
     const milliseconds = Math.floor((time % 100) / 10);
 
     return `${seconds}:${milliseconds}`;
   };
+  // 時間を10:00の形にする
+  const formatResultTime = (time: number) => {
+    const seconds = Math.floor(time / 100);
+    const milliseconds = Math.floor((time % 100) / 100);
+
+    return `${seconds}:${milliseconds}`;
+  };
 
   // 問題を切り替える処理
   const handleNextQuestion = () => {
-    setCurrentQuestionIndex((prev) => (prev + 1) % currentQuestions.length);
-    setInput("");
-    console.log("次へ進む");
+    if (currentQuestionIndex + 1 === NumberOfQuestion) {
+      setIsActive(false);
+    } else {
+      setCurrentQuestionIndex((prev) => prev + 1);
+      setInput("");
+      console.log("次へ進む");
+    }
   };
 
   const baseClassName = "question flex justify-center items-center";
 
   return (
     <div className="relative pt-20 px-4">
-      {countdown > 0 && (
-        <div className="absolute rounded-xl z-10 mx-auto w-11/12 h-64 flex justify-center items-center text-8xl font-semibold bg-white">
-          <p>{countdown}</p>
-        </div>
-      )}
-      <div className="mt-2 text-center text-3xl">
-        <span style={{ fontFamily: "Fira code" }}>{formatTime(time)}</span>
-      </div>
-      <p>{score}</p>
-      {currentQuestionIndex + 1 === NumberOfQuestion ? (
-        <>
-          <div className="h-[76px] mx-auto w-60 flex justify-center items-center text-lg"></div>
-          <Question
-            questions={currentQuestions[currentQuestionIndex]}
-            className={baseClassName}
-            isCurrent
-            input={input}
-            handleNextQuestion={handleNextQuestion}
-            setScore={setScore}
-          />
-        </>
+      {time > 0 && isActive === false ? (
+        <GameFinish></GameFinish>
       ) : (
         <>
-          <Question
-            questions={
-              currentQuestions[
-                (currentQuestionIndex + 1) % currentQuestions.length
-              ]
-            }
-            className={baseClassName}
-            isCurrent={false}
-            input={null}
-            handleNextQuestion={handleNextQuestion}
-            setScore={setScore}
-          />
-          <Question
-            questions={currentQuestions[currentQuestionIndex]}
-            className={baseClassName}
-            isCurrent={true}
-            input={input}
-            handleNextQuestion={handleNextQuestion}
-            setScore={setScore}
-          />
-        </>
-      )}
+          {countdown > 0 && (
+            <div className="absolute rounded-xl z-10 mx-auto w-11/12 h-72 flex justify-center items-center text-8xl font-semibold bg-white">
+              <p>{countdown}</p>
+            </div>
+          )}
+          <div className="mt-2 text-center text-3xl">
+            <span style={{ fontFamily: "Fira code" }}>{formatTime(time)}</span>
+          </div>
+          <p>{score}</p>
+          {currentQuestionIndex + 1 === NumberOfQuestion ? (
+            <>
+              <div className="h-[76px] mx-auto w-60 flex justify-center items-center text-lg"></div>
+              <Question
+                questions={currentQuestions[currentQuestionIndex]}
+                className={baseClassName}
+                isCurrent
+                input={input}
+                handleNextQuestion={handleNextQuestion}
+                setScore={setScore}
+              />
+            </>
+          ) : (
+            <>
+              <Question
+                questions={
+                  currentQuestions[
+                    (currentQuestionIndex + 1) % currentQuestions.length
+                  ]
+                }
+                className={baseClassName}
+                isCurrent={false}
+                input={null}
+                handleNextQuestion={handleNextQuestion}
+                setScore={setScore}
+              />
+              <Question
+                questions={currentQuestions[currentQuestionIndex]}
+                className={baseClassName}
+                isCurrent={true}
+                input={input}
+                handleNextQuestion={handleNextQuestion}
+                setScore={setScore}
+              />
+            </>
+          )}
 
-      {/* 次の問題 */}
+          {/* 次の問題 */}
 
-      {/* <p className=" text-lg] font-bold text-gray-700">第２問</p>
+          {/* <p className=" text-lg] font-bold text-gray-700">第２問</p>
       <div className="h-14 mx-auto w-60 rounded-lg flex justify-center items-center bg-gray-200 text-lg">
         <span>3×4=</span>
         <span></span>
@@ -152,6 +175,8 @@ const Game = () => {
         <span id="question">3+5=</span>
         <span id="answer">{input}</span>
       </div> */}
+        </>
+      )}
       <KeyPad handleKeyPress={handleKeyPress} />
     </div>
   );
