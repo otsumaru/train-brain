@@ -77,25 +77,20 @@ const Game = () => {
   const GameFinish = () => {
     return (
       <div className="h-60">
-        <p>おわり！</p>
-        <p>{formatResultTime(time)}</p>
+        <p>コンプリート！</p>
+        <p>{formatTime(time)}</p>
       </div>
     );
   };
 
-  // 時間を10:0の形にする
+  // 時間を10:00の形にする
   const formatTime = (time: number) => {
     const seconds = Math.floor(time / 100);
-    const milliseconds = Math.floor((time % 100) / 10);
+    const milliseconds = Math.floor(time % 100);
 
-    return `${seconds}:${milliseconds}`;
-  };
-  // 時間を10:00の形にする
-  const formatResultTime = (time: number) => {
-    const seconds = Math.floor(time / 100);
-    const milliseconds = Math.floor((time % 100) / 100);
-
-    return `${seconds}:${milliseconds}`;
+    return `${seconds}:${
+      milliseconds > 10 ? milliseconds : `0${milliseconds}`
+    }`;
   };
 
   // 問題を切り替える処理
