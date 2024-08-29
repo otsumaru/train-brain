@@ -71,7 +71,7 @@ const Game = () => {
       const email = null;
       const name = null;
       if (name) {
-        addResult(null, time, name);
+        addResult(email, time, name);
       }
     }
 
