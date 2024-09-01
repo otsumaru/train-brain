@@ -1,10 +1,10 @@
-"use client";
 import Header from " @/components/Header";
+import Link from "next/link";
 
 export default function Record() {
   return (
-    <main className="">
-      <Header></Header>
+    <main>
+      <Header />
       <div className="flex-1 pt-20 px-4">
         <h2 className="text-3xl font-bold text-center text-indigo-600 mb-6">
           あそびかた
@@ -30,12 +30,12 @@ export default function Record() {
         </div>
 
         <div className="text-center mt-8">
-          <button
+          <Link
+            href="/"
             className="bg-indigo-500 text-white py-2 px-4 rounded-lg shadow hover:bg-indigo-600"
-            onClick={() => window.history.back()}
           >
             戻る
-          </button>
+          </Link>
         </div>
       </div>
     </main>

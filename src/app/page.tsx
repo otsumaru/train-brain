@@ -1,6 +1,6 @@
 import Header from "../components/Header";
 import Top from "../components/Top";
-export default function Home() {
+export default async function Home() {
   return (
     <main className="">
       <Header></Header>

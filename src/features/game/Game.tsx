@@ -5,9 +5,15 @@ import Question from "./components/Question";
 import questions from "./resource/questions";
 import Link from "next/link";
 import { FaTwitter } from "react-icons/fa"; // Twitterアイコンのインポート
-import { addResult } from " @/utils/supabase/supabaseFunction";
+import {
+  addResult,
+  getUserRecord,
+  updateTimeIfSmaller,
+} from " @/utils/supabase/supabaseFunction";
+import { useSession } from "next-auth/react";
 
 const Game = () => {
+  const { data: session, status } = useSession();
   const [input, setInput] = useState("");
   const [isActive, setIsActive] = useState(false);
   const [currentQuestions, setCurrentQuestions] = useState(questions);
@@ -68,11 +74,19 @@ const Game = () => {
     } else if (!isActive && time !== 0) {
       clearInterval(interval);
       // TODO ログイン機能など
-      const email = null;
-      const name = null;
-
-      if (name) {
-        addResult(email, time, name);
+      const email = session?.user?.email;
+      const name = session?.user?.name;
+      if (name && email) {
+        // まず、既存の記録を取得
+        getUserRecord(email, name).then((existingRecord) => {
+          if (!existingRecord) {
+            // 既存の記録がない場合は、新しい記録を追加
+            addResult(email, time, name);
+          } else {
+            // 既存の記録がある場合は、タイムを更新
+            updateTimeIfSmaller(name, email, time);
+          }
+        });
       }
     }
 
@@ -89,7 +103,7 @@ const Game = () => {
       const text = encodeURIComponent(
         `秒速計算ノックで${resultTime}秒の記録を達成しました！`
       );
-      const url = encodeURIComponent(window.location.href); // 現在のページのURL
+      const url = encodeURIComponent("https://train-brain.vercel.app"); // 現在のページのURL
       const hashtags = encodeURIComponent("秒速計算ノック,りあゼミ,ZeroPlus");
       const twitterUrl = `https://twitter.com/intent/tweet?text=${text}&url=${url}&hashtags=${hashtags}`;
       window.open(twitterUrl, "_blank");
