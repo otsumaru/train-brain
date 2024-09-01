@@ -130,7 +130,7 @@ const Game = () => {
     };
 
     return (
-      <div className="pt-16 flex flex-col justify-center items-center text-center">
+      <div className="pt-20 flex flex-col justify-center items-center text-center">
         <h2 className="text-4xl font-bold text-blue-600 mb-4">
           コンプリート！
         </h2>
@@ -193,7 +193,7 @@ const Game = () => {
   const baseClassName = "question flex justify-center items-center";
 
   return (
-    <div className="relative pt-20 px-4">
+    <div className="pt-20 px-4">
       {time > 0 && isActive === false ? (
         <GameFinish></GameFinish>
       ) : (
@@ -203,7 +203,7 @@ const Game = () => {
               <p>{countdown}</p>
             </div>
           )}
-          <div className="mt-2 text-center text-3xl">
+          <div className=" text-center text-3xl">
             <span style={{ fontFamily: "Fira code" }}>{formatTime(time)}</span>
           </div>
           {currentQuestionIndex + 1 === NumberOfQuestion ? (
