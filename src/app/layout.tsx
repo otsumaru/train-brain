@@ -21,6 +21,21 @@ export const metadata: Metadata = {
       },
     ],
   },
+  twitter: {
+    card: "summary",
+    site: "@egooo_zeroplus",
+    title: "秒速計算ノック | 計算スピードを競え！",
+    description:
+      "瞬時に計算力を試すクイズアプリ。計算スピードを競って楽しもう！",
+    images: [
+      {
+        url: "https://train-brain.vercel.app/img/twitter.png",
+        width: 287,
+        height: 356,
+        alt: "秒速計算ノックのイメージ",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
