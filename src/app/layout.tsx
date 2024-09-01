@@ -54,7 +54,7 @@ export default function RootLayout({
       alert(
         "このページはアプリ内ブラウザでは正常に動作しない可能性があります。デフォルトのブラウザで開きます。"
       );
-      window.location.href = window.location.href; // 外部ブラウザで再読み込み
+      window.location.href = "https://train-brain.vercel.app/"; // 外部ブラウザで再読み込み
     }
   }, []);
 
