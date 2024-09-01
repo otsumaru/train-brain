@@ -37,6 +37,26 @@ const Game = () => {
   const [time, setTime] = useState(0);
   const [countdown, setCountdown] = useState(3);
 
+  useEffect(() => {
+    // ダブルタップでズームを防止
+    const preventZoom = (event: TouchEvent) => {
+      if (event.touches.length > 1) {
+        event.preventDefault();
+      }
+    };
+
+    document.addEventListener("touchstart", preventZoom, { passive: false });
+
+    // ピンチズームを防止
+    document.addEventListener("gesturestart", (event) => {
+      event.preventDefault();
+    });
+
+    return () => {
+      document.removeEventListener("touchstart", preventZoom);
+    };
+  }, []);
+
   // クイズ開始前のカウントダウン
   useEffect(() => {
     let count = 3;
