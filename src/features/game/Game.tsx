@@ -197,7 +197,7 @@ const Game = () => {
       {time > 0 && isActive === false ? (
         <GameFinish></GameFinish>
       ) : (
-        <>
+        <div className="relative ">
           {countdown > 0 && (
             <div className="absolute rounded-xl z-10 mx-auto w-11/12 h-72 flex justify-center items-center text-8xl font-semibold bg-white">
               <p>{countdown}</p>
@@ -246,7 +246,7 @@ const Game = () => {
             </>
           )}
           <KeyPad handleKeyPress={handleKeyPress} />
-        </>
+        </div>
       )}
     </div>
   );
