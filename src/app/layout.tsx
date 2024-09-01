@@ -46,15 +46,26 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   useEffect(() => {
-    // アプリ内ブラウザ（SNSブラウザ）で開かれた場合、外部ブラウザで開く処理
-    if (
-      typeof window !== "undefined" &&
-      window.navigator.userAgent.match(/FBAV|FBAN|Instagram|Line|Twitter/i)
-    ) {
-      alert(
-        "このページはアプリ内ブラウザでは正常に動作しない可能性があります。デフォルトのブラウザで開きます。"
-      );
-      window.location.href = "https://train-brain.vercel.app/"; // 外部ブラウザで再読み込み
+    // 初期レンダリング時のみ実行
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const isAppBrowser = params.get("openExternalBrowser");
+
+      if (isAppBrowser) {
+        // 外部ブラウザからのリダイレクトの場合、パラメータを削除
+        window.history.replaceState(
+          {},
+          document.title,
+          window.location.pathname
+        );
+      } else {
+        // アプリ内ブラウザと判断された場合、アラートを表示して外部ブラウザにリダイレクト
+        alert(
+          "このページはアプリ内ブラウザでは正常に動作しない可能性があります。デフォルトのブラウザで開きます。"
+        );
+        window.location.href =
+          "https://train-brain.vercel.app/?openExternalBrowser=1";
+      }
     }
   }, []);
 
