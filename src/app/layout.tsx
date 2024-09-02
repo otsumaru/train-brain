@@ -60,9 +60,7 @@ export default function RootLayout({
         );
       } else {
         // アプリ内ブラウザと判断された場合、アラートを表示して外部ブラウザにリダイレクト
-        alert(
-          "このページはアプリ内ブラウザでは正常に動作しない可能性があります。デフォルトのブラウザで開きます。"
-        );
+        alert("デフォルトのブラウザで開きます。");
         window.location.href =
           "https://train-brain.vercel.app/?openExternalBrowser=1";
       }
