@@ -191,7 +191,7 @@ const Game = () => {
   const baseClassName = "question flex justify-center items-center";
 
   return (
-    <div className="relative px-4">
+    <div className="pt-20 relative px-4">
       {time > 0 && isActive === false ? (
         <GameFinish></GameFinish>
       ) : (
@@ -201,7 +201,7 @@ const Game = () => {
               <p>{countdown}</p>
             </div>
           )}
-          <div className="pt-20 mt-2 text-center text-3xl">
+          <div className="mt-2 text-center text-3xl">
             <span style={{ fontFamily: "Fira code" }}>{formatTime(time)}</span>
           </div>
           {currentQuestionIndex + 1 === NumberOfQuestion ? (
