@@ -51,18 +51,24 @@ export default function RootLayout({
       const params = new URLSearchParams(window.location.search);
       const isAppBrowser = params.get("openExternalBrowser");
 
-      if (isAppBrowser) {
+      // アプリ内ブラウザを判定するための正規表現
+      const appBrowserRegex = /FBAV|FBAN|Instagram|Line/i;
+      const isAppBrowserDetected = appBrowserRegex.test(
+        window.navigator.userAgent
+      );
+
+      if (isAppBrowserDetected && !isAppBrowser) {
+        // アプリ内ブラウザと判断された場合、アラートを表示して外部ブラウザにリダイレクト
+        alert("デフォルトのブラウザで開きます。");
+        window.location.href =
+          "https://train-brain.vercel.app/?openExternalBrowser=1";
+      } else if (isAppBrowser) {
         // 外部ブラウザからのリダイレクトの場合、パラメータを削除
         window.history.replaceState(
           {},
           document.title,
           window.location.pathname
         );
-      } else {
-        // アプリ内ブラウザと判断された場合、アラートを表示して外部ブラウザにリダイレクト
-        alert("デフォルトのブラウザで開きます。");
-        window.location.href =
-          "https://train-brain.vercel.app/?openExternalBrowser=1";
       }
     }
   }, []);

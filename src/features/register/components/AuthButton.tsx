@@ -6,8 +6,6 @@ export function SignIn({
   provider,
   ...props
 }: { provider?: string } & React.ComponentPropsWithoutRef<"button">) {
-  console.log("signInが実行されました");
-
   return (
     <form
       action={async () => {

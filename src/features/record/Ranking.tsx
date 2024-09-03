@@ -48,32 +48,37 @@ const Ranking = () => {
 
           const rankClass =
             index === 0
-              ? "bg-yellow-300 text-yellow-900 border-yellow-500"
+              ? "rounded-md border-yellow-500 gold"
               : index === 1
-              ? "bg-gray-300 text-gray-900 border-gray-500"
+              ? "rounded-md border-gray-500 silver"
               : index === 2
-              ? "bg-orange-400 text-orange-900 border-orange-500"
-              : "bg-white text-gray-700 border-gray-300";
+              ? "rounded-md border-orange-500 blonde"
+              : "text-gray-700 border-gray-300";
 
           return (
             <div
               key={record.id}
-              className={`flex items-center justify-between my-3 p-4 shadow rounded-lg border-2 ${
-                isUserRecord ? "bg-blue-100 border-blue-500" : rankClass
+              className={`flex items-center justify-between my-2 p-2 shadow rounded-md border-1 ${
+                isUserRecord ? "user-record" : "bg-white"
               }`}
             >
-              <div className="flex items-center">
+              <div className="flex items-center justify-center">
                 <div
-                  className={`text-2xl font-extrabold mr-4 ${
-                    isUserRecord ? "text-blue-700" : "text-green-700"
-                  }`}
+                  className={`text-xl font-semibold mr-2 px-[9px] rank text-white pt-1 ${rankClass}`}
+                  style={{ fontFamily: "Fira code" }}
                 >
-                  {index + 1}位
+                  {index + 1}
                 </div>
-                <div className="font-semibold text-lg">{record.user_name}</div>
+                <div className="font-semibold truncate w-36 ">
+                  {record.user_name}
+                </div>
               </div>
-              <div className="text-xl font-mono">
-                Time: {formatTime(record.time)}
+              <div className="flex justify-center items-center">
+                <p>Time:</p>
+                <p className="text-xl font-mono w-16 text-right">
+                  {" "}
+                  {formatTime(record.time)}
+                </p>
               </div>
             </div>
           );

@@ -68,7 +68,6 @@ const Game = () => {
         id: index + 1, // 新しいIDを割り当てる
       }));
     setCurrentQuestions(shuffledQuestions.slice(0, NumberOfQuestion));
-    console.log(currentQuestions);
 
     const interval = setInterval(() => {
       count--;
@@ -186,7 +185,6 @@ const Game = () => {
       setIsActive(false);
     } else {
       setInput("");
-      console.log("次へ進む");
     }
   };
 

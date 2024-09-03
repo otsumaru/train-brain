@@ -16,3 +16,42 @@ h5,
 p {
   user-select: none;
 }
+
+.gold {
+  background: linear-gradient(
+    45deg,
+    #cb8b0b 0%,
+    #dbb311 25%,
+    #fee9a0 50%,
+    #d8b113 75%,
+    #d3910c 90% 100%
+  );
+}
+.silver {
+  background: linear-gradient(
+    45deg,
+    #7a7a7a 0%,
+    #bcbcbc 25%,
+    #e8e8e8 50%,
+    #bbbbbb 75%,
+    #757575 90% 100%
+  );
+}
+.blonde {
+  background: linear-gradient(
+    45deg,
+    #c88f3a 0%,
+    #f0b164 25%,
+    #ffc489 50%,
+    #d88d4b 75%,
+    #bb6d0e 90% 100%
+  );
+}
+.rank {
+  color: black;
+  -webkit-text-fill-color: white; /* （順序に関係なく）色を上書きする */
+  -webkit-text-stroke: 1px black;
+}
+.user-record {
+  background: linear-gradient(#7cff4c 0%, #b2ff9d 50%, #7cff4c 100%);
+}
