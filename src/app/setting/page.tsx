@@ -24,7 +24,7 @@ export default function Record() {
           <div className="text-center mt-6">
             <p className="text-lg text-gray-800 font-semibold mb-2">ヒント:</p>
             <p className="text-gray-600">
-              速く解くためには、計算問題に慣れることが大切です。練習を重ねて、高得点を目指しましょう！
+              速く解くためには、計算問題に慣れることが大切です。練習を重ねて、高タイムを目指しましょう！
             </p>
           </div>
         </div>

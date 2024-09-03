@@ -36,9 +36,13 @@ const Ranking = () => {
 
   return (
     <div className="pt-20 px-4 max-w-2xl mx-auto">
-      <h2 className="font-bold text-green-700 text-4xl text-center mb-8">
+      <h2 className="font-bold text-green-700 text-4xl text-center mb-6">
         ランキング
       </h2>
+
+      <p className={`${session?.user ? "disabled:" : "text-center"}`}>
+        ログインするとランキングに参加できます！
+      </p>
 
       {records ? (
         records.map((record, index) => {
@@ -69,9 +73,9 @@ const Ranking = () => {
                 >
                   {index + 1}
                 </div>
-                <div className="font-semibold truncate w-36 ">
+                <p className="font-semibold truncate w-44 ">
                   {record.user_name}
-                </div>
+                </p>
               </div>
               <div className="flex justify-center items-center">
                 <p>Time:</p>
