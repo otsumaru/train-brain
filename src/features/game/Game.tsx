@@ -191,13 +191,13 @@ const Game = () => {
   const baseClassName = "question flex justify-center items-center";
 
   return (
-    <div className="pt-20 relative px-4">
+    <div className="relative px-4">
       {time > 0 && isActive === false ? (
         <GameFinish></GameFinish>
       ) : (
         <>
           {countdown > 0 && (
-            <div className="absolute rounded-xl z-10 mx-auto w-11/12 h-72 flex top-20 justify-center items-center text-8xl font-semibold bg-white">
+            <div className="absolute rounded-xl z-10 mx-auto w-11/12 h-72 flex -top-2 justify-center items-center text-8xl font-semibold bg-white">
               <p>{countdown}</p>
             </div>
           )}

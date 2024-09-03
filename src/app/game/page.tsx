@@ -25,6 +25,7 @@ export default async function Record() {
       </Head>
       <main className="overflow-hidden h-screen w-screen">
         <Header />
+        <div className="h-20"></div>
         <Game />
       </main>
     </SessionProvider>
