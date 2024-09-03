@@ -23,7 +23,7 @@ export default async function Record() {
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
         />
       </Head>
-      <main className="overflow-hidden h-screen w-screen">
+      <main className="">
         <Header />
         <div className="h-20"></div>
         <Game />
