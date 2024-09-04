@@ -52,7 +52,7 @@ export default function RootLayout({
       const isAppBrowser = params.get("openExternalBrowser");
 
       // アプリ内ブラウザを判定するための正規表現
-      const appBrowserRegex = /FBAV|FBAN|Instagram|Line/i;
+      const appBrowserRegex = /FBAV|FBAN|Line/i;
       const isAppBrowserDetected = appBrowserRegex.test(
         window.navigator.userAgent
       );
