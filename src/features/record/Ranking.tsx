@@ -40,7 +40,7 @@ const Ranking = () => {
         ランキング
       </h2>
 
-      <p className={`${session?.user ? "disabled:" : "text-center"}`}>
+      <p className={`${session?.user ? "text-center" : "hidden"}`}>
         ログインするとランキングに参加できます！
       </p>
 
