@@ -3,6 +3,41 @@ import Header from " @/components/Header";
 import { SignOut } from "../../features/register/components/AuthButton";
 import { auth } from "../../../auth";
 import Link from "next/link";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "ログイン | ログアウト | 秒速計算ノック",
+  description:
+    "ログインして計算スピードを競おう！アカウントを作成してランキングに参加しよう。",
+  keywords: ["ログイン", "計算クイズ", "脳トレ", "ランキング", "アカウント"],
+  openGraph: {
+    title: "秒速計算ノック | 計算スピードを競え！",
+    url: "https://train-brain.vercel.app/",
+    images: [
+      {
+        url: "https://train-brain.vercel.app/img/meta.png",
+        width: 287,
+        height: 356,
+        alt: "秒速計算ノックのイメージ",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary",
+    site: "@egooo_zeroplus",
+    title: "秒速計算ノック | 計算スピードを競え！",
+    description:
+      "ログインして計算スピードを競おう！アカウントを作成してランキングに参加しよう。",
+    images: [
+      {
+        url: "https://train-brain.vercel.app/img/twitter.png",
+        width: 287,
+        height: 356,
+        alt: "秒速計算ノックのイメージ",
+      },
+    ],
+  },
+};
 
 const Register = async () => {
   const session = await auth();
