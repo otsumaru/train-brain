@@ -15,7 +15,8 @@ export function SignIn({
     >
       <button
         {...props}
-        className="mt-2 bg-orange-500 text-white p-2 rounded hover:bg-orange-600 text-xs"
+        aria-label="サインイン"
+        className="mt-2 bg-orange-600 text-white p-2 rounded hover:bg-orange-700 text-xs"
       >
         サインイン
       </button>
@@ -38,6 +39,7 @@ export function SignOut({
     >
       <button
         {...props}
+        aria-label="ログアウト"
         className="w-full p-2 text-gray-700 bg-white border border-gray-300 rounded hover:bg-gray-100"
       >
         ログアウト

@@ -30,6 +30,7 @@ const KeyPad: React.FC<KeyPadProps> = ({ handleKeyPress }) => {
       <button
         key={"backspace"}
         onClick={() => handleKeyPress("backspace")}
+        aria-label="backspace"
         className="w-[108px] h-14 text-2xl font-bold bg-white border rounded-lg shadow-md active:bg-black active:text-white"
       >
         <BackSpaceIcon></BackSpaceIcon>
