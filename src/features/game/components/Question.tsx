@@ -29,7 +29,6 @@ const Question: React.FC<QuestionProps> = ({
 
   const judge = (enteredAnswer: string) => {
     if (answer === enteredAnswer) {
-      // TODO 正解の処理
       console.log("正解");
       handleNextQuestion();
       setCurrentQuestionIndex((prev) => prev + 1);
@@ -37,7 +36,6 @@ const Question: React.FC<QuestionProps> = ({
     } else if (answer.length === 2 && enteredAnswer.length === 1) {
       return;
     } else {
-      // TODO 不正解の処理
       console.log("不正解");
       setInput("");
       playWrongSound();

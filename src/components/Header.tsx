@@ -7,8 +7,8 @@ const Header = () => {
       <Image
         src="/img/brain.png" // 画像パスはpublicフォルダからの相対パスで指定
         alt="Brain Image"
-        width={44} // 幅を50pxに設定
-        height={44} // 高さを50pxに設定
+        width={44}
+        height={44}
         className=""
       />
       <h1 className="pt-2 text-3xl font-bold">秒速計算ノック</h1>
