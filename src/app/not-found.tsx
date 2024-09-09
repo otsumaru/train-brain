@@ -1,5 +1,24 @@
 import React from "react";
 import Link from "next/link";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "ページが見つかりません | 秒速計算ノック",
+  description: "お探しのページは存在しないか、削除された可能性があります。",
+  keywords: ["404", "ページが見つかりません", "エラー", "秒速計算ノック"],
+  openGraph: {
+    title: "404 - ページが見つかりません | 秒速計算ノック",
+    url: "https://train-brain.vercel.app/",
+    images: [
+      {
+        url: "https://train-brain.vercel.app/",
+        width: 287,
+        height: 356,
+        alt: "秒速計算ノックのイメージ",
+      },
+    ],
+  },
+};
 
 const NotFound = () => {
   return (

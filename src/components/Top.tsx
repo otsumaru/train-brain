@@ -26,7 +26,7 @@ const Top = () => {
 
   return (
     <div className="pt-20">
-      <h2 className="text-xl mt-10 text-center font-semibold">
+      <h2 className="text-xl mt-6 text-center font-semibold">
         変わり続けるものは
         <br /> 存在し続ける。
       </h2>

@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Header from "../components/Header";
 import Top from "../components/Top";
+import Footer from " @/components/Footer";
 
 export const metadata: Metadata = {
   title: "秒速計算ノック",
@@ -40,6 +41,7 @@ export default async function Home() {
     <main className="">
       <Header></Header>
       <Top></Top>
+      <Footer></Footer>
     </main>
   );
 }
