@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: "秒速計算ノック",
   description: "瞬時に計算力を試すクイズアプリ。計算スピードを競って楽しもう！",
   keywords: ["計算クイズ", "速さ", "脳トレ", "数学ゲーム", "瞬時の計算"],
+  verification: {
+    google: "SqGfzy3Mmgi75iPmU7FD1X96b1b1W9tAAhhQS_RYMKQ",
+  },
   openGraph: {
     title: "秒速計算ノック | 計算スピードを競え！",
     url: "https://train-brain.vercel.app/",
