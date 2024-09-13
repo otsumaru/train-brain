@@ -58,7 +58,10 @@ export default function RootLayout({
           name="keywords"
           content="計算クイズ, 速さ, 脳トレ, 数学ゲーム, 瞬時の計算"
         />
-
+        <meta
+          name="google-site-verification"
+          content="SqGfzy3Mmgi75iPmU7FD1X96b1b1W9tAAhhQS_RYMKQ"
+        />
         {/* Open Graph */}
         <meta
           property="og:title"
@@ -91,10 +94,6 @@ export default function RootLayout({
         <meta name="twitter:image:width" content="287" />
         <meta name="twitter:image:height" content="356" />
         <meta name="twitter:image:alt" content="秒速計算ノックのイメージ" />
-        <meta
-          name="google-site-verification"
-          content="SqGfzy3Mmgi75iPmU7FD1X96b1b1W9tAAhhQS_RYMKQ"
-        />
       </Head>
       <body className={inter.className}>
         {children}
