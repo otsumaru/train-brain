@@ -174,9 +174,7 @@ const Game = () => {
     const seconds = Math.floor(time / 100);
     const milliseconds = Math.floor(time % 100);
 
-    return `${seconds}:${
-      milliseconds > 10 ? milliseconds : `0${milliseconds}`
-    }`;
+    return `${seconds}:${milliseconds > 9 ? milliseconds : `0${milliseconds}`}`;
   };
 
   // 問題を切り替える処理
