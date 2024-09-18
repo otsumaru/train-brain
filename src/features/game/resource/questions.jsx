@@ -40,7 +40,7 @@ const questions = [
   { id: 39, question: "27÷9", answer: "3" },
   { id: 40, question: "8+6", answer: "14" },
   { id: 41, question: "7×5", answer: "35" },
-  { id: 42, question: "15÷3", answer: "5" },
+  { id: 42, question: "15÷5", answer: "3" },
   { id: 43, question: "12-4", answer: "8" },
   { id: 44, question: "20×2", answer: "40" },
   { id: 45, question: "18+5", answer: "23" },
