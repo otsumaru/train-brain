@@ -68,6 +68,7 @@ export default function RootLayout({
           property="og:title"
           content="秒速計算ノック | 計算スピードを競え！"
         />
+        <meta property="og:site_name" content="秒速計算ノック" />
         <meta property="og:url" content="https://train-brain.vercel.app/" />
         <meta
           property="og:image"
